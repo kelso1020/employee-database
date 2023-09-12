@@ -62,10 +62,6 @@ function userPrompts() {
           value: "REMOVE_DEPARTMENT"
         },
         {
-          name: "View Total Utilized Budget By Department",
-          value: "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT"
-        },
-        {
           name: "Quit",
           value: "QUIT"
         }
@@ -104,9 +100,6 @@ function userPrompts() {
         break;
       case "REMOVE_DEPARTMENT":
         removeDepartment();
-        break;
-      case "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT":
-        viewUtilizedBudgetByDepartment();
         break;
       case "VIEW_ROLES":
         viewRoles();
@@ -399,7 +392,7 @@ function addDepartment() {
   ])
     .then(res => {
       let name = res;
-      db.createDepartment(name)
+      db.listDepts(name)
         .then(() => console.log(`Added ${name.name} to the database`))
         .then(() => userPrompts())
     })
